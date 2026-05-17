@@ -92,10 +92,10 @@ The spike test was designed to simulate sudden, dramatic surges in traffic, such
 
 | Parameter | Value |
 | :--- | :---: |
-| Number of Threads (Users)	| 10 → 500 → 10 (sudden changes) |
-| Ramp-Up Period |	1 second for spike, 60 seconds for normal |
-| Loop Count | 3 cycles |
-| Duration |	~10 minutes |
+| Number of Threads (Users)	| 500 |
+| Ramp-Up Period |1 second for spike|
+| Loop Count | Infinite cycles |
+| Duration | ~10 minutes |
 | Test Objective	| Assess system reaction to instant traffic surges and recovery capability | 
 
 
@@ -192,29 +192,42 @@ Bottlenecks were identified by analyzing which steps in the user journey exhibit
 
 ## 3.3 Spike Test Results with Analysis
 
-<img width="1600" height="671" alt="WhatsApp Image 2026-05-11 at 15 02 01" src="https://github.com/user-attachments/assets/9a9f204e-c2e3-45c3-b6bd-5dfcfa2b6834" />
-<br/>
+<img width="1187" height="339" alt="image" src="https://github.com/user-attachments/assets/39b46550-1a79-42dc-9125-d85c9c966675" />
 
-| Label | Avg Response (ms) | 90th pct (ms) | 95th pct (ms) | 99th pct (ms) | Max (ms) | Error % | Status |
-|-------|-------------------|----------------|----------------|----------------|----------|---------|--------|
-| Homepage | 431.40 | 600.10 | 637.90 | 931.54 | 1057 | 0.00% | ⚠️ High 99th pct |
-| Find Flights | 421.23 | 555.00 | 619.85 | 982.07 | 1274 | 0.00% | ⚠️ Highest max spike |
-| Choose Flight | 440.05 | 578.80 | 648.70 | 1360.89 | 1549 | 0.00% | ❌ Slowest average |
-| Complete Booking | 435.43 | 581.30 | 695.90 | 1033.29 | 1098 | 0.00% | ⚠️ High 95th pct |
+<br/>
 
 ### Overall Statistics
 
 | Metric | Value |
 |--------|-------|
-| Total Requests | 1000 |
-| Error Rate | 0.00% ✅ |
-| Average Response | 432.03 ms |
-| 90th Percentile | 575.00 ms |
-| 95th Percentile | 641.85 ms |
-| 99th Percentile | 1022.93 ms (1.02 sec) |
-| Maximum Response | 1549 ms (1.55 sec) |
-| Throughput | 7.90 txn/s |
+| Total Requests | 85,148 |
+| Error Rate | 0.001% (1 error only) ✅ |
+| Average Response | 508.61 ms |
+| Min Response | 299 ms |
+| 90th Percentile | 610.00 ms |
+| 95th Percentile | 738.00 ms |
+| 99th Percentile | 1344.98 ms (1.34 sec) |
+| Maximum Response | 9654 ms (9.65 sec) ⚠️ |
+| Throughput | 141.70 txn/s ✅ |
 
+| Aspect | Finding |
+|--------|---------|
+| **Spike Confirmation** | ✅ Clear spike observed — Min (299ms) → Max (9654ms) = **32x increase** |
+| **System Stability** | ✅ 99.999% success rate — only 1 error out of 85,148 requests |
+| **Homepage Performance** | ❌ Worst affected — Max 9654ms, 99th pct 2499.99ms |
+| **Find Flights** | ✅ Best performer — Lowest average (475ms) and 99th pct (1730ms) |
+| **Complete Booking** | ⚠️ 1 ConnectionClosedException — Server closed connection mid-response under extreme load |
+| **Throughput** | ✅ 141.70 txn/s — Excellent load handling |
+
+### Raw Data
+#### 📊 Response Over time
+<br/>
+<img width="1181" height="515" alt="image" src="https://github.com/user-attachments/assets/d1133c7c-e4a7-45eb-9fc9-e19331a78701" />
+<br/>
+
+#### 📊 Response Time Percentiles Over Time (successful responses)
+<br/>
+<img width="1179" height="515" alt="image" src="https://github.com/user-attachments/assets/488800b8-b686-4d34-883f-41a040e5d3ed" />
 
 ---
 ## Final Conclusion
