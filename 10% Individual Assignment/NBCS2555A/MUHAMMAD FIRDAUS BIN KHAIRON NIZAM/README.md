@@ -2,7 +2,7 @@
 
 **Course:** ITT440 - Network Programming  
 **Group:** NBCS2555B  
-**Name:** Muhammad Firdaus Bin Khairon Nizam
+**Name:** Muhammad Firdaus Bin Khairon Nizam <br/>
 **Student ID:** 2026731927 </br>
 **Lecturer:** Sir Shahadan Bin Saad
 ---
@@ -10,10 +10,6 @@
 <br/>
 
 ## Performance Testing And Bottleneck Analysis of a Web Application Using Apache JMeter
-
----
-## YOUTUBE VIDEO
-
 
 ---
 
@@ -25,7 +21,7 @@ Performance testing is a fundamental practice for evaluating the reliability, re
 
 * To determine the application's breaking point by progressively increasing user concurrency beyond normal limits
 
-* To assess system behavior during sudden, unexpected traffic surges using spike testing
+* To simulate sustained normal-to-peak traffic over an extended period to identify memory leaks, resource fragmentation, and degradation over time.
 
 Through these tests, this project aims to identify performance bottlenecks, measure response times, and provide insights into the application's overall stability and capacity for handling real-world usage patterns.
 
@@ -163,8 +159,6 @@ Bottlenecks were identified by analyzing which steps in the user journey exhibit
 
 <br/>
 
-### Load Test Statistics Report (Moderate / Spike Test)
-
 ### Load Test Result
 
 ### Overall Statistics
@@ -243,6 +237,7 @@ Bottlenecks were identified by analyzing which steps in the user journey exhibit
 <img width="1160" height="382" alt="image" src="https://github.com/user-attachments/assets/1751a3f0-d177-4d0b-9ffe-fa22a1f8a863" />
 
 <br/>
+
 ## Stress Test Statistics Report
 
 ### Overall Statistics
@@ -577,3 +572,8 @@ Bottlenecks were identified by analyzing which steps in the user journey exhibit
 | Transactions | ✅ **A+** (424ms avg, 0% errors) |
 
 **Final Verdict: ✅ Ready for low to medium traffic. ❌ Add circuit breaker before high-traffic launch.**
+
+---
+## YOUTUBE VIDEO
+
+### https://youtu.be/z_4eluxjqIU
