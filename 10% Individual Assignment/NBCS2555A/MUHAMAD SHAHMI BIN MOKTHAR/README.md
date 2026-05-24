@@ -23,10 +23,7 @@ The objective is to analyze API behavior under different concurrent user loads t
 
 ## Target API
 
-REST Countries API
-
-Endpoint:
-
+REST Countries API \
 https://restcountries.com/v3.1/all
 
 ---
