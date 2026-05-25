@@ -1,4 +1,4 @@
-# Performance Testing and Bottleneck Analysis of REST Countries API Using Apache JMeter
+# Performance Testing and Bottleneck Analysis of DummyJSON Products API Using Apache JMeter
 
 Course: ITT440 - Network Programming \
 Group: NBCS2555A \
@@ -7,9 +7,9 @@ Matrix No.: 2024727655
 
 ---
 ## Project Overview
-This project evaluates the performance and scalability of the REST Countries API using Apache JMeter.
+This project evaluates the performance and scalability of the DummyJSON Products API using Apache JMeter.
 
-The objective is to analyze API behavior under different concurrent user loads through Load Testing, Stress Testing, and Spike Testing.
+The project focuses on analyzing API behavior under different concurrent user loads using Load Testing, Stress Testing, and Spike Testing techniques.
 
 ---
 
@@ -24,7 +24,16 @@ The objective is to analyze API behavior under different concurrent user loads t
 ## Target API
 
 REST Countries API \
-https://restcountries.com/v3.1/all
+https://dummyjson.com/products
+
+---
+
+## Objectives
+
+- Evaluate API performance under different workloads
+- Analyze response time and throughput
+- Identify bottlenecks during high traffic
+- Observe API behavior during sudden traffic spikes
 
 ---
 
@@ -34,10 +43,11 @@ https://restcountries.com/v3.1/all
 Purpose:
 Evaluate API performance under normal traffic conditions.
 
-Configuration:
-- Users: 50
-- Ramp-up: 30 seconds
-- Duration: 5 minutes
+| Setting | Value |
+|---|---|
+| Users | 50 |
+| Ramp-up | 30 seconds |
+| Duration | 5 minutes |
 
 ---
 
@@ -45,10 +55,11 @@ Configuration:
 Purpose:
 Determine system behavior under excessive load.
 
-Configuration:
-- Users: 150–200
-- Ramp-up: 60 seconds
-- Duration: 5 minutes
+| Setting | Value |
+|---|---|
+| Users | 150 |
+| Ramp-up | 60 seconds |
+| Duration | 5 minutes |
 
 ---
 
@@ -56,11 +67,24 @@ Configuration:
 Purpose:
 Analyze API response during sudden traffic spikes.
 
-Configuration:
-- Initial Users: 20
-- Spike Users: 150
-- Ramp-up: 5–10 seconds
-- Duration: 3–5 minutes
+| Setting | Value |
+|---|---|
+| Initial Users | 20 |
+| Spike Users | 150 |
+| Spike Time | 5 seconds |
+| Duration | 3 minutes |
+
+
+---
+
+## HTTP Request Configuration
+
+| Field | Value |
+|---|---|
+| Protocol | https |
+| Server Name | dummyjson.com |
+| Method | GET |
+| Path | /products |
 
 ---
 
@@ -77,7 +101,7 @@ Configuration:
 ## Project Structure
 
 ```plaintext
-restcountries-api-jmeter-performance-analysis/
+MUHAMAD SHAHMI BIN MOKTHAR\
 │
 ├── README.md
 ├── screenshots/
@@ -86,37 +110,24 @@ restcountries-api-jmeter-performance-analysis/
 └── report.pdf
 ```
 
----
-
-## JMeter Configuration
-
-### HTTP Request
-
-| Field | Value |
-|------|------|
-| Protocol | https |
-| Server Name | restcountries.com |
-| Method | GET |
-| Path | /v3.1/all |
-
----
-
 ## Sample Results
 
 | Test Type | Avg Response Time | Throughput | Error Rate |
-|------------|------------------|-------------|------------|
-| Load Test | 250 ms | 55 req/sec | 0% |
-| Stress Test | 1900 ms | 90 req/sec | 12% |
-| Spike Test | 2700 ms | 70 req/sec | 18% |
+|---|---|---|---|
+| Load Test | 220 ms | 60 req/sec | 0% |
+| Stress Test | 1100 ms | 85 req/sec | 6% |
+| Spike Test | 1800 ms | 70 req/sec | 11% |
 
 ---
 
-## Findings
+## Bottleneck Analysis
 
-- API performs efficiently under moderate traffic.
-- Response time increases under excessive concurrent load.
-- Sudden traffic spikes may cause temporary instability and increased latency.
-- Error rates increase significantly during stress and spike testing.
+Potential bottlenecks identified:
+
+- Network latency
+- API throttling
+- Request queue congestion
+- Server processing delays
 
 ---
 
@@ -124,13 +135,15 @@ restcountries-api-jmeter-performance-analysis/
 
 - Implement caching mechanisms
 - Use CDN services
-- Optimize server-side processing
+- Optimize API response handling
 - Apply load balancing strategies
 
 ---
 
 ## Conclusion
 
-The project successfully demonstrates the use of Apache JMeter for REST API performance testing and highlights the importance of scalability and stability analysis in modern web services.
+This project successfully evaluated the performance and scalability of DummyJSON Products API using Apache JMeter.
+
+The results indicate that the API performs efficiently under moderate workloads but experiences increased latency and error rates under excessive traffic conditions.
 
 ---
